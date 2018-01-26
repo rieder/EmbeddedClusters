@@ -7,47 +7,30 @@ masses guesses for velocities & velocity dispersions
 from __future__ import print_function, division
 
 import os
-
 import time
-
 import numpy as np
 import numpy.random as rnd
-
 from numpy import pi, sqrt
 
 from amuse.datamodel import (
         AbstractParticleSet,
         Particles)
-
 from amuse.units import units, nbody_system
 from amuse.units.trigo import (
         cos, sin, arccos,
         )
-
 from amuse.io import write_set_to_file
-
 from amuse.ic.brokenimf import new_broken_power_law_mass_distribution
 from amuse.ic.salpeter import new_salpeter_mass_distribution
-
 from amuse.support.console import set_printing_strategy
-
 from amuse.ext.spherical_model import (
         new_uniform_spherical_particle_distribution,
         )
 
-try:
-    from usagi.ic.gasplummer import new_plummer_gas_model
-    from usagi.ic.plummer import new_plummer_model
-except:
-    from gasplummer import new_plummer_gas_model
-    from plummer import new_plummer_model
-
-try:
-    from usagi.plotting.starcluster import gas_stars_plot
-except:
-    from plotting import gas_stars_plot
-
-from parameters import Parameters  # FIXME
+from gasplummer import new_plummer_gas_model
+from plummer import new_plummer_model
+from plotting_fresco import gas_stars_plot
+from parameters import Parameters
 from argumentparser import new_IC_argument_parser
 
 
@@ -154,7 +137,6 @@ class RealClusterIC (object):
         self.initialize_stars()
         self.initialize_gas()
 
-    # FIXME I am not happy about this thing being here...
     AbstractParticleSet.add_global_function_attribute(
             "velocity_dispersion",
             velocity_dispersion,

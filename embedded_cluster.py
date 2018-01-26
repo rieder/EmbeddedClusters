@@ -62,7 +62,6 @@ class EmbeddedCluster(object):
         sigma = np.sqrt(squarevelocities.sum()/(N-1))
         return sigma
 
-    # FIXME - do we need this here?
     AbstractParticleSet.add_global_function_attribute(
             "velocity_dispersion",
             velocity_dispersion,
@@ -78,7 +77,7 @@ class EmbeddedCluster(object):
         self.time = self.p.time_start
         self.model_time = self.p.time_start
 
-        self.plot_n = 0  # FIXME
+        self.plot_n = 0
 
         self.log_output = logging.getLogger(__name__)
         self.log_output.setLevel("INFO")
@@ -240,8 +239,6 @@ class EmbeddedCluster(object):
         self.log_output.debug(
                 "Saving backup at time %s", self.model_time
                 )
-        # FIXME: no separate gas/stars file s, integrate them and use subsets.
-        # Or superset?
         starfile = 'StarsDump%010.4f.hdf5' % (
                 self.model_time.value_in(units.Myr),
                 )
@@ -385,7 +382,6 @@ class EmbeddedCluster(object):
 
     def log_energy(self):
         self.sync_model()
-        # FIXME
         self.log_output.debug(
                 "Writing energy to logfile",
                 )

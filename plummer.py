@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 """
 Plummer model generator
 
@@ -5,7 +6,7 @@ This module contains a function used to create Plummer (1911) models, which
 follow a spherically symmetric density profile of the form:
 rho = c * (1 + r**2)**(-5/2)
 """
-
+from __future__ import print_function, division
 import numpy
 import numpy.random
 
@@ -44,7 +45,7 @@ class MakePlummerModel(object):
         self.do_scale = do_scale
         self.radius_cutoff = radius_cutoff
         if random_state is not None:
-            print "DO NOT USE RANDOM STATE"
+            print("DO NOT USE RANDOM STATE")
 
         self.random_state = None
 

@@ -4,7 +4,6 @@ import argparse
 
 
 def new_IC_argument_parser(p):
-
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
@@ -48,7 +47,6 @@ def new_IC_argument_parser(p):
 
 
 def new_simulation_argument_parser(p):
-
     parser = argparse.ArgumentParser()
     if p.codes_collision_detection:
         parser.add_argument(
